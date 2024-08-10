@@ -159,6 +159,9 @@ export const Navbar = () => {
 
   useWindowEvent("keydown", listener);
 
+  const toolCount = useMemo(() => {
+    return navItems.length;
+  }, [navItems]);
   return (
     <Stack
       className={classes.navbar}
@@ -188,7 +191,7 @@ export const Navbar = () => {
             allowDeselect={false}
             searchable
             clearable
-            placeholder="Search..."
+            placeholder={`Search... (${toolCount} tools)`}
             px="sm"
             size="xs"
             display={iconMode ? "none" : "block"}

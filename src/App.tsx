@@ -51,6 +51,7 @@ const TextDiff = loadable(() => import("./Features/text/TextDiff"));
 const Markdown = loadable(() => import("./Features/markdown/Markdown"));
 const YamlJson = loadable(() => import("./Features/json-yaml/Yaml"));
 const Pastebin = loadable(() => import("./Features/pastebin/Pastebin"));
+const OpenAI = loadable(() => import("./Features/openai/OpenAI"));
 const Repl = loadable(() => import("./Features/repl/Repl"));
 const Image = loadable(() => import("./Features/image/Image"));
 const Playground = loadable(
@@ -236,6 +237,7 @@ function App() {
               <Route path="/markdown" element={<Markdown />}></Route>
               <Route path="/yamljson" element={<YamlJson />}></Route>
               <Route path="/pastebin" element={<Pastebin />}></Route>
+              <Route path="/openai" element={<OpenAI />}></Route>
               <Route path="/repl" element={<Repl />}></Route>
               <Route path="/image" element={<Image />}></Route>
               <Route path="/bulk-image" element={<BulkImage />}></Route>

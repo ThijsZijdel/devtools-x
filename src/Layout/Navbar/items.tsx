@@ -148,6 +148,13 @@ export const navitems: NavItem[] = [
     group: "Utilities",
   },
   {
+    id: "openai",
+    to: "/openai",
+    icon: <FaCode />,
+    text: "OpenAI",
+    group: "Testing",
+  },
+  {
     id: "repl",
     to: "/repl",
     icon: <FaCode />,

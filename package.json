@@ -54,6 +54,7 @@
     "lorem-ipsum": "^2.0.8",
     "monaco-themes": "^0.4.4",
     "nanoid": "^5.0.7",
+    "openai": "^4.55.4",
     "polished": "^4.3.1",
     "preact": "^10.20.1",
     "qrcode": "^1.5.3",
@@ -76,7 +77,8 @@
     "terser": "^5.30.0",
     "tinycolor2": "^1.6.0",
     "typescript-eslint": "^7.4.0",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@actions/github": "^6.0.0",
