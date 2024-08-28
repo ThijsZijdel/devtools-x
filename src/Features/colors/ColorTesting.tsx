@@ -110,8 +110,11 @@ export const ContrastContent = ({
       <div style={{ display: "flex", width: "100%" }}>
         <span
           onClick={() => (toggle ? toggle() : null)}
+          onKeyDown={(e) => e.key === "Enter" && toggle && toggle()}
           className={`${classes.box} ${background === "#ffffff" ? "dark" : "light"}`}
           style={{ color: color, background }}
+          role="button"
+          tabIndex={0}
         >
           Aa
         </span>
