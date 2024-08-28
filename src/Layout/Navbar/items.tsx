@@ -333,6 +333,13 @@ export const navitems: NavItem[] = [
     group: "Previewers",
   },
   {
+    id: "typography",
+    to: "/typography",
+    icon: <MdTextFields />,
+    text: "Typography",
+    group: "Generators",
+  },
+  {
     id: "svg-preview",
     to: "/svg-preview",
     icon: <TbFileTypeSvg />,

@@ -44,6 +44,7 @@ const Colors = loadable(() => import("./Features/colors/Colors"));
 const ColorHarmonies = loadable(
   () => import("./Features/colors/ColorHarmonies")
 );
+const Typography = loadable(() => import("./Features/typography/Typography"));
 const ColorTesting = loadable(() => import("./Features/colors/ColorTesting"));
 
 const RegexTester = loadable(() => import("./Features/regex/RegexTester"));
@@ -255,6 +256,7 @@ function App() {
               <Route path="/url-encoder" element={<UrlEncoder />}></Route>
               <Route path="/html-preview" element={<HtmlPreview />}></Route>
               <Route path="/lorem" element={<Lorem />}></Route>
+              <Route path="/typography" element={<Typography />}></Route>
               <Route path="/qrcode" element={<QrCode />}></Route>
               <Route path="/pdf-reader" element={<PdfReader />}></Route>
               <Route path="/cron" element={<Cron />}></Route>
