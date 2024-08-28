@@ -275,10 +275,10 @@ export const navitems: NavItem[] = [
     group: "Generators",
   },
   {
-    id: "yamljson",
-    to: "/yamljson",
+    id: "DataConverter",
+    to: "/DataConverter",
     icon: <FaYinYang />,
-    text: "Yaml Json",
+    text: "Data Converter",
     group: "Converters",
   },
   {
