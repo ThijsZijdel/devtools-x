@@ -1,10 +1,8 @@
 import { Divider, Group, List, ListItem, Select, Stack } from "@mantine/core";
 import { useMemo, useState } from "react";
-import { Convert } from "@/utils/colors";
 import { clipboard } from "@tauri-apps/api";
 import { notifications } from "@mantine/notifications";
-
-const conv = new Convert();
+import styles from "./Typography.module.scss";
 
 const tags = [
   "Default text",
@@ -25,20 +23,18 @@ const tags = [
   "code",
   "button",
 
-  // momentum plan
   "cite", // citation
   "q", // quote
   "dfn", // definition
   "abbr", // abbreviation
 
-  // 'input',    // catalyst plan
+  // 'input',
   // 'textarea',
   // 'select',
   // 'label',
   // 'span',  inherited
   // 'div',    inherited
 
-  // apex plan
   // 'strong',
   // 'em',
   // 'i',
@@ -99,23 +95,6 @@ export const FONT_SCALES = [
 
 export const DEFAULT_FONTS = [
   {
-    //     type: 'title',
-    //     heading: true,
-    //     text: false,
-    //     label: 'Title',
-    //     font: 'Open Sans',
-    //     scale: 6.5,
-    //     size: '16',
-    //     metric: 'px',
-    //     color: 'shades',
-    //     shade: '40',
-    //     bold: false,
-    //     weight: null,
-    //     italic: false,
-    //     underline: false,
-    //     class:'title',
-    //     lorem: 'For super clients.'
-    // },{
     type: "h1",
     heading: true,
     label: "Heading 1",
@@ -123,7 +102,7 @@ export const DEFAULT_FONTS = [
     scale: 5,
     size: "16",
     metric: "px",
-    lorem: "For power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "h2",
@@ -133,7 +112,7 @@ export const DEFAULT_FONTS = [
     scale: 4,
     size: "16",
     metric: "px",
-    lorem: "For more power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "h3",
@@ -143,7 +122,7 @@ export const DEFAULT_FONTS = [
     scale: 3,
     size: "16",
     metric: "px",
-    lorem: "For more power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "h4",
@@ -153,7 +132,7 @@ export const DEFAULT_FONTS = [
     scale: 2,
     size: "16",
     metric: "px",
-    lorem: "For more power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "h5",
@@ -163,7 +142,7 @@ export const DEFAULT_FONTS = [
     scale: 1,
     size: "16",
     metric: "px",
-    lorem: "For more power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "h6",
@@ -173,7 +152,7 @@ export const DEFAULT_FONTS = [
     scale: 0,
     size: "16",
     metric: "px",
-    lorem: "For more power clients.",
+    lorem: "Develop with devtools.",
   },
   {
     type: "p",
@@ -185,33 +164,6 @@ export const DEFAULT_FONTS = [
     lorem: "Lorem ipsum dolar samit dola.",
   },
   {
-    type: "p",
-    text: true,
-    label: "Small paragraph",
-    font: "Open Sans",
-    scale: -1,
-    size: "16",
-    metric: "px",
-    class: "small",
-    lorem: "Lorem ipsum dolar samit dola.",
-  },
-  {
-    //     type: 'span',
-    //     text: true,
-    //     heading: false,
-    //     label: 'Span tag',
-    //     font: 'Open Sans',
-    //     scale: 0,
-    //     size: '16',
-    //     metric: 'px',
-    //     color: 'shades',
-    //     shade: '40',
-    //     bold: false,
-    //     weight: null,
-    //     italic: false,
-    //     underline: false,
-    //     lorem: 'Span',
-    // },{
     type: "b",
     text: true,
     label: "Bold tag",
@@ -236,7 +188,7 @@ export const DEFAULT_FONTS = [
   {
     type: "u",
     text: true,
-    label: "Underline tag",
+    label: "Underline",
     font: "Open Sans",
     scale: 0,
     size: "16",
@@ -286,6 +238,13 @@ const formats = [
   "js",
   "ts",
 ];
+
+const getFontStyle = (font: any) => ({
+  fontSize: `${font.size}px`,
+  fontWeight: font.bold ? "bold" : "normal",
+  fontStyle: font.italic ? "italic" : "normal",
+  textDecoration: font.underline ? "underline" : "none",
+});
 
 // getScaled(font, baseSize, fontScale) :
 const Typography = () => {
@@ -361,36 +320,28 @@ const Typography = () => {
           overflowY: "auto",
         }}
       >
-        {fonts.map((font: any) => {
-          return (
-            <ListItem
-              key={font.label}
-              style={{
-                listStyleType: "none",
-              }}
-              role="button"
-              tabIndex={0}
-              onClick={() => copy(font)}
-              onKeyDown={(e) => e?.key === "Enter" && copy(font)}
-            >
-              <p
-                style={{
-                  fontSize: `${font.size}px`,
-                  fontWeight: font.bold ? "bold" : "normal",
-                  fontStyle: font.italic ? "italic" : "normal",
-                  textDecoration: font.underline ? "underline" : "none",
-                  marginBottom: 0,
-                }}
-              >
+        {fonts.map((font: any) => (
+          <ListItem
+            key={font.label}
+            className={styles.listItem}
+            role="button"
+            tabIndex={0}
+            onClick={() => copy(font)}
+            onKeyDown={(e) => e?.key === "Enter" && copy(font)}
+          >
+            <div className={styles.label}>{font.label}</div>
+            {font.type === "a" ? (
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a href="#" style={getFontStyle(font)}>
                 {font.lorem}
-              </p>
-              {/*<Group align="center">*/}
-              {/*  <span>{font.label}</span>*/}
-              {/*  <span>{font.size}</span>*/}
-              {/*</Group>*/}
-            </ListItem>
-          );
-        })}
+              </a>
+            ) : font.type === "button" ? (
+              <button style={getFontStyle(font)}>{font.lorem}</button>
+            ) : (
+              <p style={getFontStyle(font)}>{font.lorem}</p>
+            )}
+          </ListItem>
+        ))}
       </List>
     </Stack>
   );

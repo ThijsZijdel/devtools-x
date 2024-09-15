@@ -1,0 +1,160 @@
+import type { Hue, ToSpace } from "@/utils/tokens/types";
+import {
+  cssConverter,
+  javascriptConverter,
+  jsonConverter,
+  phpConverter,
+  rawConverter,
+  sassConverter,
+  scssConverter,
+  swiftConverter,
+  tailwindConverter,
+  tokenConverter,
+  typeScriptConverter,
+  xmlConverter,
+  yamlConverter,
+} from "@/utils/tokens/converter";
+
+export const exportOptions: {
+  name: string;
+  description: string;
+  extension: string;
+  format: string;
+  file?: string;
+  icon: string;
+  append?: string;
+  converter?: (
+    hues: Hue[],
+    toSpace: ToSpace,
+    separator?: string,
+    header?: boolean
+  ) => string;
+}[] = [
+  {
+    name: "SVG",
+    description: "Scalable Vector Graphics",
+    extension: "svg",
+    format: "image/svg+xml",
+    icon: "svg",
+  },
+  {
+    name: "CSS",
+    description: "Cascading Style Sheets",
+    extension: "css",
+    format: "text/css",
+    file: "css",
+    icon: "css",
+    converter: cssConverter,
+  },
+  {
+    name: "SASS",
+    description: "Syntactically Awesome Style Sheets",
+    extension: "scss",
+    format: "text/sass",
+    file: "sass",
+    icon: "sass",
+    converter: sassConverter,
+  },
+  {
+    name: "SCSS",
+    description: "Sassy Cascading Style Sheets",
+    extension: "scss",
+    format: "text/scss",
+    file: "scss",
+    icon: "scss",
+    converter: scssConverter,
+  },
+  {
+    name: "JSON",
+    description: "JavaScript Object Notation",
+    extension: "json",
+    format: "application/json",
+    file: "json",
+    icon: "json",
+    converter: jsonConverter,
+  },
+  {
+    name: "JavaScript",
+    description: "JavaScript",
+    extension: "javascript",
+    format: "application/javascript",
+    file: "js",
+    icon: "js",
+    converter: javascriptConverter,
+  },
+  {
+    name: "TypeScript",
+    description: "TypeScript",
+    extension: "typescript",
+    format: "application/typescript",
+    file: "ts",
+    icon: "ts",
+    converter: typeScriptConverter,
+  },
+  {
+    name: "Tailwind",
+    description: "Tailwind",
+    extension: "json",
+    format: "text/css",
+    file: "json",
+    icon: "tailwind",
+    append: "Tailwind",
+    converter: tailwindConverter,
+  },
+  {
+    name: "Tokens",
+    description: "Tokens",
+    extension: "json",
+    format: "application/json",
+    file: "json",
+    icon: "tokens",
+    append: "Tokens",
+    converter: tokenConverter,
+  },
+  {
+    name: "YAML",
+    description: "YAML",
+    extension: "yaml",
+    format: "application/x-yaml",
+    file: "yaml",
+    icon: "yaml",
+    converter: yamlConverter,
+  },
+  {
+    name: "XML",
+    description: "Extensible Markup Language",
+    extension: "xml",
+    format: "application/xml",
+    file: "xml",
+    icon: "xml",
+    converter: xmlConverter,
+  },
+  {
+    name: "Swift",
+    description: "Swift",
+    extension: "swift",
+    format: "text/swift",
+    file: "swift",
+    icon: "swift",
+    converter: swiftConverter,
+  },
+  {
+    name: "PHP",
+    description: "PHP",
+    extension: "php",
+    format: "text/php",
+    file: "php",
+    icon: "php",
+    converter: phpConverter,
+  },
+  {
+    name: "Raw",
+    description: "Raw",
+    extension: "txt",
+    format: "text/plain",
+    file: "txt",
+    icon: "raw",
+    append: "Raw",
+    converter: rawConverter,
+  },
+];

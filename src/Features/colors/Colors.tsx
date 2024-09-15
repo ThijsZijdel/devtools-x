@@ -2,6 +2,7 @@ import classes from "./styles.module.css";
 
 import {
   Box,
+  Button,
   Stack,
   Switch,
   Text,
@@ -19,8 +20,9 @@ import {
 } from "@/utils/colors";
 
 import { RenderShades } from "./RenderShades";
-import { useColorState } from "@/hooks";
+import { useColorState, useThemeData } from "@/hooks";
 import { EditableColorOutput } from "@/Features/colors/ColorEditableOutput";
+import { ColorThemePalette } from "@/Features/colors/ColorThemePalette";
 
 const Colors = () => {
   const [color, setColor, conversions] = useColorState();
@@ -73,6 +75,7 @@ const Colors = () => {
   const temperaturesWarm = interpolateColor([l, c, h], "h", config.steps, 60);
   const temperatures = h > 180 ? temperaturesCool : temperaturesWarm;
 
+  const { themeData, updateTheme } = useThemeData();
   return (
     <Stack
       align="center"
@@ -82,9 +85,7 @@ const Colors = () => {
         hexCode={color.startsWith("#") ? color.slice(1) : color}
         onChange={(color) => setColor(color.hex)}
       />
-
       <EditableColorOutput conversions={conversions} onCopy={onCopy} />
-
       <Stack align="center" style={{ width: "95%" }}>
         <RenderShades colors={shades} setColor={copy} label="Shades" />
         <RenderShades colors={tones} setColor={copy} label="Tones" />
@@ -92,7 +93,6 @@ const Colors = () => {
         <RenderShades colors={hues} setColor={copy} label="Hues" />
         <RenderShades colors={temperatures} setColor={copy} label="Temps" />
       </Stack>
-
       <Stack align="center">
         <Switch
           checked={colorScheme === "dark"}
@@ -124,6 +124,11 @@ const Colors = () => {
           ))}
         </Box>
       </Stack>
+      <Button onClick={() => updateTheme("colors", "primary", shades)}>
+        Update primary
+      </Button>
+
+      <ColorThemePalette />
     </Stack>
   );
 };

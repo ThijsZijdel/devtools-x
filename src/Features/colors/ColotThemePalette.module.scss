@@ -1,0 +1,65 @@
+.container {
+  width: 100%;
+  padding: 2rem 1.5rem;
+}
+
+.hueRow {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+
+.shadeBox {
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &.active {
+    font-weight: bold;
+    transform: scale(1.1);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.exportButton {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.modalDescription {
+  font-size: 0.875rem;
+}
+
+.select {
+  width: 100%;
+}
+
+.separatorOptions {
+  margin-top: 0.2rem;
+}
+
+.checkbox {
+  margin-top: 0.5rem;
+}
+
+.downloadButton {
+  margin-top: 1rem;
+}

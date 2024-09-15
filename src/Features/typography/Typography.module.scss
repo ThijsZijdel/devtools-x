@@ -1,0 +1,42 @@
+
+.listItem {
+    position: relative;
+    list-style-type: none;
+    border: 1px solid light-dark(
+        var(--mantine-color-gray-2),
+        var(--mantine-color-gray-8)
+    );
+    margin-bottom: 10px;
+    padding: 2em 0.25em;
+    line-height: 1em!important;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    p {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin: 0;
+    }
+}
+
+.label {
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  right: 0;
+    padding: 0.25em 0.5em;
+
+  background: light-dark(
+    var(--mantine-color-gray-0),
+    var(--mantine-color-gray-9)
+  );
+}
