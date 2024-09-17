@@ -1,6 +1,5 @@
 import { Store } from "tauri-plugin-store-api";
 import { defaultConfig } from "@/Contexts/AppContextProvider";
-import { initialTheme } from "@/hooks/useThemeData";
 
 const db = new Store("settings.json");
 
@@ -14,7 +13,6 @@ if (!(await db.length())) {
     db.set("password", {}),
     db.set("sidebar", []),
     db.set("config", defaultConfig),
-    db.set("themeData", initialTheme),
   ]);
   await db.save();
 }
